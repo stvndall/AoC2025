@@ -11,4 +11,10 @@ public class FileReader
     {
         return System.IO.File.ReadAllText(filePath);
     }
+
+    public static T[][] MakeGrid<T>(string path, Func<char, T> func)
+    {
+        var lines = ReadLines(path);
+        return lines.Select(line => line.Select(func).ToArray()).ToArray();
+    }
 }
